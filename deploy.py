@@ -6,10 +6,10 @@ from servicefoundry import Build, PythonBuild, Service, Resources
 
 logging.basicConfig(level=logging.INFO)
 service = Service(
-    name="flask",
+    name="fastapi",
     image=Build(
         build_spec=PythonBuild(
-            command="gunicorn -b 0.0.0.0:8000 main:app",
+            command="uvicorn main:app --host 0.0.0.0 --port 8000",
         ),
     ),
     ports=[{"port": 8000}],
